@@ -6,10 +6,17 @@ import { useState } from "react"
 import { useCart } from "@/context/cart-context"
 import { CartItem } from "./cart-item"
 import { formatPrice } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 
 export function Cart() {
   const { products, total, removeProduct, updateProduct } = useCart()
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+
+  const handleCheckout = () => {
+    router.push("/checkout")
+    setIsOpen(false)
+  }
 
   const totalPrice = formatPrice(total / 100)
 
@@ -62,7 +69,7 @@ export function Cart() {
               </ul>
 
               <div className="mt-4">
-                <Button className="w-full">
+                <Button className="w-full" onClick={handleCheckout} disabled={!products.length}>
                   <CreditCard />
                   Finalizar pedido
                 </Button>
