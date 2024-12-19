@@ -47,7 +47,7 @@ export function CheckoutForm() {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: "http://localhost:3001/confirmation",
+        return_url: "https://best-pizza-dsl.vercel.app/confirmation",
       },
     })
 
