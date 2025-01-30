@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
-import { Header } from "@/components/layout/header"
 import { CartProvider } from "@/context/cart-context"
 
 export const metadata: Metadata = {
@@ -15,10 +14,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" suppressHydrationWarning>
       <body className={`antialiased`}>
         <CartProvider>
-          <Header />
           {children}
           <Toaster />
         </CartProvider>
